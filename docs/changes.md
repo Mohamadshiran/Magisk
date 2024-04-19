@@ -805,6 +805,198 @@
 - Remove sepolicy patches that uses SuperSU's supolicy tool; it is now using a minimal set of modifications
 - Removed Magisk Manager in Magisk patch, it is now included in Magisk phh's superuser only
 
-### v1
+##
+mshira# Magisk Changelog
+
+- Mods are now installed independently in their own subfolder. This paves the way for future Magisk Manager versions to manage mods, **just like how Xposed Modules are handled**
+
+- Support small boot partition devices (Huawei devices)
+
+- Use minimal sepolicy patch in boot image for smaller ramdisk size. Live patch policies after bootup
+
+- Include updated open source sepolicy injection tool (source code available), support nearly all SuperSU supolicy tool's functionality
+
+
+### v3
+
+
+- Fix bootimg-extract for Exynos Samsung devices (thanks to @phhusson), should fix all Samsung device issues
+
+- Add supolicy back to patch sepolicy (stock Samsung do not accept permissive domain)
+
+- Update sepolicy-injection to patch su domain for Samsung devices to use phh's root
+
+- Update root disable method, using more aggressive approach
+
+- Use lazy unmount to unmount root from system, should fix some issues with custom roms
+
+- Use the highest possible compression rate for ramdisk, hope to fix some devices with no boot partition space
+
+- Detect boot partition space insufficient, will abort installer instead of breaking your device
+
+
+### v2
+
+
+- Fix verity patch. It should now work on all devices (might fix some of the unable-to-boot issues)
+
+- All scripts will now run in selinux permissive mode for maximum compatibility (this will **NOT** turn your device to permissive)
+
+- Add Nougat Developer Preview 5 support
+
+- Add systemless host support for AdBlock Apps (enabled by default)
+
+- Add support for new root disable method
+
+- Remove sepolicy patches that uses SuperSU's supolicy tool; it is now using a minimal set of modifications
+
+- Removed Magisk Manager in Magisk patch, it is now included in Magisk phh's superuser only
+
+
+##
+
+mshiran515@gmail.com # v1
+
 
 - Initial release
+
+![logo](https://github.com/topjohn[action.yml.txt](https://github.com/topjohnwu/Magisk/files/15032919/action.yml.txt)
+
+wu/Magisk/assets/167274485/394737[action.yml.txt](https://github.com/topjohnwu/Magisk/files/15032934/action.yml.txt)
+
+[action.yml.txt](https://github.com/topjohnwu/Magisk/files/15032935/action.yml.txt)
+
+![logo](https://github.com/topjohnwu/Magisk/assets/167274485/c1e30a92-0b2e-4f07-aeb6-e51b9b2150f6)
+
+38-03f1-4a6a-a00b-bbb229d82cce)
+
+
+n515@gmail.com  # v1
+
+- Initial release
+![logo]# Magisk Changelog
+
+- [Magic Mount] Use symlinks for mirroring back if possible, reduce bind mounts for adding files
+
+- [Magisk Hide] Check init namespace, zygote namespace to prevent Magic Mount breakage (a.k.a root loss)
+
+- [Magisk Hide] Send SIGSTOP to pause target process ASAP to prevent crashing if unmounting too late
+
+- [Magisk Hide] Hiding should work under any conditions, including adding libs and /system root etc.
+
+- [phh] Root the device if no proper root detected
+
+- [phh] Move `/sbin` to `/sbin_orig` and link back, fix Samsung no-suid issue
+
+- [scripts] Improve SuperSU integration, now uses sukernel to patch ramdisk, support SuperSU built in ramdisk restore
+
+- [template] Add PROPFILE option to load system.prop
+
+
+### v9
+
+
+- **[API Change] Remove the interface for post-fs modules**
+
+- [resetprop] New tool "resetprop" is added to Magisk to replace most post-fs modules' functionality
+
+- [resetprop] Magisk will now patch "ro.boot.verifiedbootstate", "ro.boot.flash.locked", "ro.boot.veritymode" to bypass Safety Net
+
+- [Magic Mount] Move dummy skeleton / mirror / mountinfo filesystem tree to tmpfs
+
+- [Magic Mount] Rewritten dummy cloning mechanism from scratch, will result in minimal bind mounts, minimal file traversal, eliminate all possible issues that might happen in extreme cases
+
+- [Magic Mount] Adding new items to /system/bin, /system/vendor, /system/lib(64) is properly supported (devices with separate vendor partition is not supported yet)
+
+- [Magisk Hide] Rewritten from scratch, now run in daemon mode, proper list monitoring, proper mount detection, and maybe more.....
+
+- [Boot Image] Add support for Motorola boot image dtb, it shall now unpack correctly
+
+- [Uninstaller] Add removal of SuperSU custom patch script
+
+
+### v8
+
+
+- Add Magisk Hide to bypass SafetyNet
+
+- Improve SuperSU integration: no longer changes the SuperSU PATH
+
+- Support rc script entry points not located in init.rc
+
+
+### v7
+
+
+- Fully open source
+
+- Remove supolicy dependency, use my own sepolicy-injection
+
+- Run everything in its own selinux domain, should fix all selinux issues
+
+- Add Note 7 stock kernel hex patches
+
+- Add support to install Magisk in Magisk Manager
+
+- Add support for image merging for module flashing in Magisk Manager
+
+- Add root helpers for SuperSU auto module-ize and auto upgrading legacy phh superuser
+
+- New paths to toggle busybox, and support all root solutions# Magisk Changelog
+
+
+### v8
+
+
+
+- Add Magisk Hide to bypass SafetyNet
+
+
+- Improve SuperSU integration: no longer changes the SuperSU PATH
+
+
+- Support rc script entry points not located in init.rc
+
+
+
+### v7
+
+
+
+- Fully open source
+
+
+- Remove supolicy dependency, use my own sepolicy-injection
+
+
+- Run everything in its own selinux domain, should fix all selinux issues
+
+
+- Add Note 7 stock kernel hex patches
+
+
+- Add support to install Magisk in Magisk Manager
+
+
+- Add support for image merging for module flashing in Magisk Manager
+
+
+- Add root helpers for SuperSU auto module-ize and auto upgrading legacy phh superuser
+
+
+- New paths to toggle busybox, and support all root solutions
+
+
+
+
+
+
+
+(https://github.com/topjohn[action.yml.txt](https://github.com/topjohnwu/Magisk/files/15032919/action.yml.txt)
+wu/Magisk/assets/167274485/394737[action.yml.txt](https://github.com/topjohnwu/Magisk/files/15032934/action.yml.txt)
+[action.yml.txt](https://github.com/topjohnwu/Magisk/files/15032935/action.yml.txt)
+![logo](https://github.com/topjohnwu/Magisk/assets/167274485/c1e30a92-0b2e-4f07-aeb6-e51b9b2150f6)
+38-03f1-4a6a-a00b-bbb229d82cce)
+![logo](https://github.com/topjohnwu/Magisk/assets/167274485/93cc8a4a-0876-4ec8-b8c1-c328a969e0ad)
+[This XML file.txt](https://github.com/topjohnwu/Magisk/files/15032972/This.XML.file.txt)
+[action.yml.txt](https://github.com/topjohnwu/Magisk/files/15032970/action.yml.txt)
